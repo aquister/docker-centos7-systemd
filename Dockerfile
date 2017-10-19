@@ -8,7 +8,7 @@ ENV PATH "${PATH}:/opt/puppetlabs/bin"
 RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
 RUN yum -y update
 
-RUN yum groupinstall 'Development Tools'
+RUN yum -y groupinstall 'Development Tools'
 
 RUN yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
