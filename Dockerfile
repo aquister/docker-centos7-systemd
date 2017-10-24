@@ -9,7 +9,7 @@ RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
 RUN yum -y update
 
 RUN yum -y groupinstall 'Development Tools'
-RUN yum -y install wget which
+RUN yum -y install wget which vim
 
 RUN yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
