@@ -8,7 +8,14 @@ ENV PATH "${PATH}:/opt/puppetlabs/bin"
 RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
 RUN yum -y update
 
+RUN yum -y install epel-release
 RUN yum -y groupinstall 'Development Tools'
+RUN yum -y install cmake clang clang-devel llvm-devel openssl-devel
+RUN yum -y install valgrind valgrind-devel valgrind.i686
+RUN yum -y install libXcomposite libXrender.i686
+RUN yum -y install fontconfig-devel.i686 fontconfig-devel.x86_64
+RUN yum -y install mesa-libEGL-devel mesa-libGL-devel.i686 mesa-libGLU-devel.i686
+RUN yum -y install python34-devel ImageMagick SDL-devel
 RUN yum -y install wget which vim
 
 RUN yum clean all; \
