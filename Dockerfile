@@ -10,18 +10,19 @@ RUN yum -y update
 
 RUN yum -y install epel-release
 RUN yum -y groupinstall 'Development Tools'
-RUN yum -y install cmake clang clang-devel llvm-devel openssl-devel
-RUN yum -y install dbus-x11 glew-devel gperf json-c-devel lsof lzip bc texinfo xz-devel
-RUN yum -y install valgrind valgrind-devel valgrind.i686
-RUN yum -y install libXcomposite libXrender.i686 glib2.i686 glibc-devel.i686
-RUN yum -y install libSM.i686 libcurl-devel libpcap libpcap-devel libpng12.i686 libpng12.x86_64
-RUN yum -y install fontconfig-devel.i686 fontconfig-devel.x86_64
-RUN yum -y install mesa-libEGL-devel mesa-libGL-devel.i686 mesa-libGLU-devel.i686
-RUN yum -y install python-devel python-lxml python-nose python-pip python-requests
-RUN yum -y install python34-devel python34-pip
-RUN yum -y install perl-Digest-SHA perl-Switch
-RUN yum -y install ImageMagick SDL-devel GitPython
-RUN yum -y install wget which vim
+RUN yum -y install cmake clang clang-devel llvm-devel openssl-devel \
+  dbus-x11 glew-devel gperf json-c-devel lsof lzip bc texinfo xz-devel \
+  valgrind valgrind-devel valgrind.i686 \
+  libXcomposite libXrender.i686 glib2.i686 glibc-devel.i686 \
+  libSM.i686 libcurl-devel libpcap libpcap-devel libpng12.i686 libpng12.x86_64 \
+  fontconfig-devel.i686 fontconfig-devel.x86_64 \
+  mesa-libEGL-devel mesa-libGL-devel.i686 mesa-libGLU-devel.i686 \
+  python-devel python-lxml python-nose python-pip python-requests \
+  python34-devel python34-pip perl-Digest-SHA perl-Switch \
+  ImageMagick SDL-devel GitPython wget which vim
+
+RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 RUN yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
