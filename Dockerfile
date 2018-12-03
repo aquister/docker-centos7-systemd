@@ -19,7 +19,7 @@ RUN yum -y install cmake clang clang-devel llvm-devel openssl-devel \
   mesa-libEGL-devel mesa-libGL-devel.i686 mesa-libGLU-devel.i686 \
   python-devel python-lxml python-nose python-pip python-requests \
   python34-devel python34-pip perl-Digest-SHA perl-Switch \
-  ImageMagick SDL-devel GitPython wget which vim
+  ImageMagick SDL-devel GitPython wget which vim lvm2
 
 RUN pip install --upgrade pip
 RUN pip3 install --upgrade pip
